@@ -13,15 +13,12 @@ protocol CarsListControllerProtocol {
     func getCars() async
 }
 
-
 final class CarsListController: CarsListControllerProtocol {
     
     var cars: [Car] = []
     
     private weak var view: CarsListViewProtocol?
-    private let dbService = DatabaseService()
-    
-    
+ 
     init(view: CarsListViewProtocol?) {
         self.view = view
         
@@ -33,7 +30,7 @@ final class CarsListController: CarsListControllerProtocol {
     func getCars() async {
         let fetchRequest: NSFetchRequest<Car> = Car.fetchRequest()
         do {
-            cars = try dbService.context.fetch(fetchRequest)
+            cars = try DatabaseService.shared.context.fetch(fetchRequest)
             
             await MainActor.run {
                 self.view?.reloadTableView()

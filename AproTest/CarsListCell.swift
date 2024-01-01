@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class CarsListCell: UITableViewCell {
+final class CarsListCell: UITableViewCell {
 
    private let carImageView: UIImageView = {
         let imageView = UIImageView()

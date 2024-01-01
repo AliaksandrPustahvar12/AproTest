@@ -16,17 +16,17 @@ protocol CarsListViewProtocol: AnyObject {
 
 final class CarsListView: UIViewController {
     
-    private var controller: CarsListControllerProtocol? 
+    private var controller: CarsListControllerProtocol?
     
     private var topLabel: UILabel = {
-      let label = UILabel()
-      label.text = "Cars"
-      label.textColor = .brown
-      label.font = UIFont.systemFont(ofSize: 30, weight: .semibold)
-      return label
+        let label = UILabel()
+        label.text = "Cars"
+        label.textColor = .brown
+        label.font = UIFont.systemFont(ofSize: 30, weight: .semibold)
+        return label
     }()
     
-   lazy private var newCarButton: UIButton = {
+    lazy private var newCarButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Add new Car", for: .normal)
         button.setTitleColor(.brown, for: .normal)
@@ -42,7 +42,7 @@ final class CarsListView: UIViewController {
         list.register(CarsListCell.self, forCellReuseIdentifier: "Cell")
         return list
     }()
-  
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemMint
@@ -54,7 +54,7 @@ final class CarsListView: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         Task {
-           await controller?.getCars()
+            await controller?.getCars()
         }
     }
     
@@ -97,7 +97,7 @@ extension CarsListView: UITableViewDataSource, UITableViewDelegate {
         let vc = CarDetailView()
         if let controller = controller {
             vc.setUpView(car: controller.cars[indexPath.row])
-            }
+        }
         vc.modalPresentationStyle = .fullScreen
         vc.modalTransitionStyle = .flipHorizontal
         present(vc, animated: true)
@@ -105,13 +105,13 @@ extension CarsListView: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension CarsListView: CarsListViewProtocol {
-   @objc func openNewCarVC() {
-
-       let vc = NewCarView()
-       vc.modalPresentationStyle = .fullScreen
-       present(vc, animated: true)
+    @objc func openNewCarVC() {
+        
+        let vc = NewCarView()
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
- 
+    
     func setController(_ controller: CarsListControllerProtocol) {
         self.controller = controller
     }

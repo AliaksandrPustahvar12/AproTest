@@ -9,9 +9,7 @@ import UIKit
 import CoreData
 
 class CarDetailView: UIViewController {
-    
-    private let dbService = DatabaseService()
-    
+  
    lazy private var imageButton: UIButton = {
         let button = UIButton()
         button.imageView?.contentMode = .scaleAspectFill
@@ -122,7 +120,15 @@ class CarDetailView: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemMint
         imagePicker.delegate = self
+        producerTextField.delegate = self
+        modelTextField.delegate = self
+        yearTextField.delegate = self
+        colorTextField.delegate = self
         setUpLayout()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
     }
     
     private func setUpLayout() {
@@ -233,7 +239,6 @@ class CarDetailView: UIViewController {
     
     @objc private func editButtonTapped() {
         if !isEditing {
-            
             self.isEditing = true
             producerTextField.isEnabled = true
             modelTextField.isEnabled = true
@@ -251,10 +256,14 @@ class CarDetailView: UIViewController {
         }
     }
     
+    @objc private func hideKeyboard() {
+        view.endEditing(true)
+    }
+    
     private func updateCarInfo() {
         guard let id = self.id else { return }
         
-        guard let producer = producerTextField.text , !producer.isEmpty, let model = modelTextField.text, !model.isEmpty, let year = yearTextField.text, !year.isEmpty, let color = colorTextField.text, !color.isEmpty, let picture = imageButton.imageView?.image else { print("EMPTY")
+        guard let producer = producerTextField.text , !producer.isEmpty, let model = modelTextField.text, !model.isEmpty, let year = yearTextField.text, !year.isEmpty, let color = colorTextField.text, !color.isEmpty, let picture = imageButton.imageView?.image else {
             showAlert()
             return
         }
@@ -263,7 +272,7 @@ class CarDetailView: UIViewController {
         fetchRequest.predicate = NSPredicate(format: "id == %@", id as CVarArg)
 
         do {
-           let cars = try dbService.context.fetch(fetchRequest)
+            let cars = try DatabaseService.shared.context.fetch(fetchRequest)
             if let car = cars.first {
             
                 car.producer = producer
@@ -271,8 +280,7 @@ class CarDetailView: UIViewController {
                 car.color = color
                 car.year = year
                 car.picture = picture.pngData()
-                print(producer, model, year, color)
-                try dbService.context.save()
+                try DatabaseService.shared.context.save()
             }
         } catch let error as NSError {
             print(error.localizedDescription)
@@ -301,5 +309,12 @@ extension CarDetailView: UIImagePickerControllerDelegate, UINavigationController
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true)
+    }
+}
+
+extension CarDetailView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

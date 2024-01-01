@@ -318,6 +318,7 @@
 				DEVELOPMENT_TEAM = 7B6YSJUL25;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AproTest/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Use photo library to add pictures of cars";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -345,6 +346,7 @@
 				DEVELOPMENT_TEAM = 7B6YSJUL25;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AproTest/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Use photo library to add pictures of cars";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

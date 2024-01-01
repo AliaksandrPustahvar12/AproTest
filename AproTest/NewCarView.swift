@@ -9,17 +9,15 @@ import UIKit
 
 class NewCarView: UIViewController {
     
-    let dbService = DatabaseService()
-    
     private var topLabel: UILabel = {
-      let label = UILabel()
-      label.text = "New Car"
-      label.textColor = .brown
-      label.font = UIFont.systemFont(ofSize: 26, weight: .semibold)
-      return label
+        let label = UILabel()
+        label.text = "New Car"
+        label.textColor = .brown
+        label.font = UIFont.systemFont(ofSize: 26, weight: .semibold)
+        return label
     }()
     
-  lazy private var imageButton: UIButton = {
+    lazy private var imageButton: UIButton = {
         let button = UIButton()
         button.setTitle("Press here to add Car picture", for: .normal)
         button.setTitleColor(.brown, for: .normal)
@@ -33,12 +31,12 @@ class NewCarView: UIViewController {
         return button
     }()
     
-   lazy private var closeButton: UIButton = {
+    lazy private var closeButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
         button.tintColor = .brown
         button.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
-      return button
+        return button
     }()
     
     private let producerTextField: UITextField = {
@@ -52,37 +50,37 @@ class NewCarView: UIViewController {
     }()
     
     private let modelTextField: UITextField = {
-         let textField = UITextField()
-         textField.placeholder = "Car model"
-         textField.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-         textField.textColor = .systemMint
+        let textField = UITextField()
+        textField.placeholder = "Car model"
+        textField.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        textField.textColor = .systemMint
         textField.borderStyle = .roundedRect
         textField.backgroundColor = .brown
-         return textField
-     }()
+        return textField
+    }()
     
     private let yearTextField: UITextField = {
-         let textField = UITextField()
-         textField.placeholder = "Car year"
-         textField.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-         textField.textColor = .systemMint
-         textField.keyboardType = .numberPad
-         textField.borderStyle = .roundedRect
-         textField.backgroundColor = .brown
-         return textField
-     }()
+        let textField = UITextField()
+        textField.placeholder = "Car year"
+        textField.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        textField.textColor = .systemMint
+        textField.keyboardType = .numberPad
+        textField.borderStyle = .roundedRect
+        textField.backgroundColor = .brown
+        return textField
+    }()
     
     private let colorTextField: UITextField = {
-         let textField = UITextField()
-         textField.placeholder = "Car color"
-         textField.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-         textField.textColor = .systemMint
-         textField.borderStyle = .roundedRect
-         textField.backgroundColor = .brown
-         return textField
-     }()
+        let textField = UITextField()
+        textField.placeholder = "Car color"
+        textField.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        textField.textColor = .systemMint
+        textField.borderStyle = .roundedRect
+        textField.backgroundColor = .brown
+        return textField
+    }()
     
-   lazy private var saveButton: UIButton = {
+    lazy private var saveButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Save Car", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 26, weight: .semibold)
@@ -96,12 +94,20 @@ class NewCarView: UIViewController {
     }()
     
     private let imagePicker = UIImagePickerController()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemMint
         imagePicker.delegate = self
+        producerTextField.delegate = self
+        modelTextField.delegate = self
+        yearTextField.delegate = self
+        colorTextField.delegate = self
         setUpLayout()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
     }
     
     private func setUpLayout() {
@@ -177,21 +183,24 @@ class NewCarView: UIViewController {
         present(imagePicker, animated: true)
     }
     
+    @objc private func hideKeyboard() {
+        view.endEditing(true)
+    }
+    
     @objc private func saveButtonTapped() throws {
-        guard let producer = producerTextField.text , !producer.isEmpty, let model = modelTextField.text, !model.isEmpty, let year = yearTextField.text, !year.isEmpty, let color = colorTextField.text, !color.isEmpty, let picture = imageButton.imageView?.image else { print("EMPTY")
+        guard let producer = producerTextField.text , !producer.isEmpty, let model = modelTextField.text, !model.isEmpty, let year = yearTextField.text, !year.isEmpty, let color = colorTextField.text, !color.isEmpty, let picture = imageButton.imageView?.image else {
             showAlert()
             return
         }
         
-        let car = Car(context: dbService.context)
+        let car = Car(context: DatabaseService.shared.context)
         car.id = .init()
         car.producer = producer
         car.model = model
         car.color = color
         car.year = year
         car.picture = picture.pngData()
-        print(producer, model, year, color)
-        try dbService.context.save()
+        try DatabaseService.shared.context.save()
         dismiss(animated: true)
     }
     
@@ -219,5 +228,12 @@ extension NewCarView: UIImagePickerControllerDelegate, UINavigationControllerDel
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true)
+    }
+}
+
+extension NewCarView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

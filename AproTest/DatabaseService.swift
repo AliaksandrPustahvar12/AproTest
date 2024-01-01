@@ -9,6 +9,8 @@ import CoreData
 
 final class DatabaseService {
     
+    static let shared = DatabaseService()
+    
     let context: NSManagedObjectContext
     
     init() {
