@@ -15,12 +15,24 @@
 		D4DA11FA2B41365200159E74 /* Car.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D4DA11F82B41365100159E74 /* Car.xcdatamodeld */; };
 		D4DA11FC2B41392E00159E74 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DA11FB2B41392E00159E74 /* DatabaseService.swift */; };
 		D4DA11FE2B4139BB00159E74 /* CarsListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DA11FD2B4139BB00159E74 /* CarsListController.swift */; };
-		D4DA12012B413FAC00159E74 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D4DA12002B413FAC00159E74 /* SnapKit */; };
-		D4DA12032B413FAC00159E74 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = D4DA12022B413FAC00159E74 /* SnapKit-Dynamic */; };
 		D4DA12052B4142A300159E74 /* NewCarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DA12042B4142A300159E74 /* NewCarView.swift */; };
 		D4DA12072B41746F00159E74 /* CarsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DA12062B41746F00159E74 /* CarsListCell.swift */; };
 		D4DA12092B418E7200159E74 /* CarDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DA12082B418E7200159E74 /* CarDetailView.swift */; };
+		D4DA12162B42D11100159E74 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D4DA12152B42D11100159E74 /* SnapKit */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D4DA120D2B42CC9800159E74 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D4DA11DF2B4132EA00159E74 /* AproTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AproTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,8 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4DA12012B413FAC00159E74 /* SnapKit in Frameworks */,
-				D4DA12032B413FAC00159E74 /* SnapKit-Dynamic in Frameworks */,
+				D4DA12162B42D11100159E74 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +67,7 @@
 			children = (
 				D4DA11E12B4132EA00159E74 /* AproTest */,
 				D4DA11E02B4132EA00159E74 /* Products */,
+				D4DA120E2B42CCDE00159E74 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,6 +98,13 @@
 			path = AproTest;
 			sourceTree = "<group>";
 		};
+		D4DA120E2B42CCDE00159E74 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -96,6 +115,7 @@
 				D4DA11DB2B4132EA00159E74 /* Sources */,
 				D4DA11DC2B4132EA00159E74 /* Frameworks */,
 				D4DA11DD2B4132EA00159E74 /* Resources */,
+				D4DA120D2B42CC9800159E74 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -103,8 +123,7 @@
 			);
 			name = AproTest;
 			packageProductDependencies = (
-				D4DA12002B413FAC00159E74 /* SnapKit */,
-				D4DA12022B413FAC00159E74 /* SnapKit-Dynamic */,
+				D4DA12152B42D11100159E74 /* SnapKit */,
 			);
 			productName = AproTest;
 			productReference = D4DA11DF2B4132EA00159E74 /* AproTest.app */;
@@ -245,7 +264,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -399,15 +418,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		D4DA12002B413FAC00159E74 /* SnapKit */ = {
+		D4DA12152B42D11100159E74 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D4DA11FF2B413FAC00159E74 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
-		};
-		D4DA12022B413FAC00159E74 /* SnapKit-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D4DA11FF2B413FAC00159E74 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = "SnapKit-Dynamic";
 		};
 /* End XCSwiftPackageProductDependency section */
 

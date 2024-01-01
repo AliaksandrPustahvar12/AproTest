@@ -117,6 +117,8 @@ extension CarsListView: CarsListViewProtocol {
     }
     
     func reloadTableView() {
-        carsList.reloadData()
+        DispatchQueue.main.async {
+            self.carsList.reloadData()
+        }
     }
 }
