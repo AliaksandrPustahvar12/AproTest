@@ -82,12 +82,8 @@
 		D4DA11E12B4132EA00159E74 /* AproTest */ = {
 			isa = PBXGroup;
 			children = (
-				D4DA11F62B4134CC00159E74 /* CarsListView.swift */,
-				D4DA12062B41746F00159E74 /* CarsListCell.swift */,
-				D4DA11FD2B4139BB00159E74 /* CarsListController.swift */,
-				D4DA12042B4142A300159E74 /* NewCarView.swift */,
-				D4DA12082B418E7200159E74 /* CarDetailView.swift */,
-				D4DA11FB2B41392E00159E74 /* DatabaseService.swift */,
+				D4DA121B2B4405B600159E74 /* Views */,
+				D4DA121D2B44061200159E74 /* Service */,
 				D4DA11E22B4132EA00159E74 /* AppDelegate.swift */,
 				D4DA11E42B4132EA00159E74 /* SceneDelegate.swift */,
 				D4DA11F82B41365100159E74 /* Car.xcdatamodeld */,
@@ -103,6 +99,34 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D4DA121B2B4405B600159E74 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D4DA121C2B4405CC00159E74 /* CarList */,
+				D4DA12082B418E7200159E74 /* CarDetailView.swift */,
+				D4DA12042B4142A300159E74 /* NewCarView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D4DA121C2B4405CC00159E74 /* CarList */ = {
+			isa = PBXGroup;
+			children = (
+				D4DA11F62B4134CC00159E74 /* CarsListView.swift */,
+				D4DA11FD2B4139BB00159E74 /* CarsListController.swift */,
+				D4DA12062B41746F00159E74 /* CarsListCell.swift */,
+			);
+			path = CarList;
+			sourceTree = "<group>";
+		};
+		D4DA121D2B44061200159E74 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				D4DA11FB2B41392E00159E74 /* DatabaseService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
