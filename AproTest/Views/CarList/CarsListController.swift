@@ -8,13 +8,13 @@
 import UIKit
 
 protocol CarsListControllerProtocol {
-    var cars: [Car] { get set }
     func getCars() async
+    func getCarForDetailsVC(index: Int) -> Car
 }
 
 final class CarsListController: NSObject, CarsListControllerProtocol {
     
-    var cars: [Car] = []
+    private var cars: [Car] = []
     
     private weak var view: CarsListViewProtocol?
  
@@ -41,6 +41,10 @@ final class CarsListController: NSObject, CarsListControllerProtocol {
     
     private func dataSourceConfirmation() {
         view?.carsList.dataSource = self
+    }
+    
+    func getCarForDetailsVC(index: Int) -> Car {
+        return cars[index]
     }
 }
 

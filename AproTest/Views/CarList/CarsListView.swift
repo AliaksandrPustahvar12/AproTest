@@ -50,7 +50,6 @@ final class CarsListView: UIViewController {
         setUpLayout()
         
         carsList.delegate = self
-      //  carsList.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -83,21 +82,12 @@ final class CarsListView: UIViewController {
 }
 
 extension CarsListView: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        controller?.cars.count ?? 0
-//    }
-//    
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? CarsListCell else { return UITableViewCell() }
-//        guard let controller = controller else { return UITableViewCell() }
-//        cell.configure(car: controller.cars[indexPath.row])
-//        return cell
-//    }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = CarDetailView()
         if let controller = controller {
-            vc.setUpView(car: controller.cars[indexPath.row])
+            let carForSetUp = controller.getCarForDetailsVC(index: indexPath.row)
+            vc.setUpView(car: carForSetUp)
         }
         vc.modalPresentationStyle = .fullScreen
         vc.modalTransitionStyle = .flipHorizontal
