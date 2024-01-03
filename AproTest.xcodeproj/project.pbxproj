@@ -64,6 +64,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D481B39D2B4560A4006E5D01 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D481B39B2B455B1D006E5D01 /* CarModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		D4DA11D62B4132EA00159E74 = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +94,7 @@
 			children = (
 				D4DA121B2B4405B600159E74 /* Views */,
 				D4DA121D2B44061200159E74 /* Service */,
+				D481B39D2B4560A4006E5D01 /* Model */,
 				D4DA11E22B4132EA00159E74 /* AppDelegate.swift */,
 				D4DA11E42B4132EA00159E74 /* SceneDelegate.swift */,
 				D4DA11F82B41365100159E74 /* Car.xcdatamodeld */,
@@ -109,7 +118,6 @@
 				D4DA121C2B4405CC00159E74 /* CarList */,
 				D4DA12082B418E7200159E74 /* CarDetailView.swift */,
 				D4DA12042B4142A300159E74 /* NewCarView.swift */,
-				D481B39B2B455B1D006E5D01 /* CarModel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
