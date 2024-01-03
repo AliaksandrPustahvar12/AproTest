@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewCarView: UIViewController {
+final class NewCarView: UIViewController {
     
     private var topLabel: UILabel = {
         let label = UILabel()
@@ -187,21 +187,23 @@ class NewCarView: UIViewController {
         view.endEditing(true)
     }
     
-    @objc private func saveButtonTapped() throws {
+    @objc private func saveButtonTapped() {
         guard let producer = producerTextField.text , !producer.isEmpty, let model = modelTextField.text, !model.isEmpty, let year = yearTextField.text, !year.isEmpty, let color = colorTextField.text, !color.isEmpty, let picture = imageButton.imageView?.image else {
             showAlert()
             return
         }
+ 
+        let carToSave = CarModel(picture: picture.pngData(),
+                                 producer: producer,
+                                 model: model,
+                                 color: color,
+                                 year: year)
         
-        let car = Car(context: DatabaseService.shared.context)
-        car.id = .init()
-        car.producer = producer
-        car.model = model
-        car.color = color
-        car.year = year
-        car.picture = picture.pngData()
-        try DatabaseService.shared.context.save()
-        dismiss(animated: true)
+       DatabaseService.shared.saveNewCar(car: carToSave)
+        
+        DispatchQueue.main.async {
+            self.dismiss(animated: true)
+        }
     }
     
     private func showAlert() {

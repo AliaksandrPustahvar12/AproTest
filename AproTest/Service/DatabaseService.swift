@@ -11,7 +11,7 @@ final class DatabaseService {
     
     static let shared = DatabaseService()
     
-    let context: NSManagedObjectContext
+   private let context: NSManagedObjectContext
     
     init() {
         let container = NSPersistentContainer(name: "Car")
@@ -29,29 +29,34 @@ final class DatabaseService {
         do {
             let cars = try context.fetch(fetchRequest)
             return cars
-        } catch let error as NSError {
+        } catch let error {
             print(error.localizedDescription)
             return []
         }
     }
     
-    func editCar(id: UUID, model: String, color: String, producer: String, year: String, picture: Data) {
-        
-        let fetchRequest: NSFetchRequest<Car> = Car.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "id == %@", id as CVarArg)
-  
+    func editCar() {
+
         do {
-            let cars = try context.fetch(fetchRequest)
-            if let car = cars.first {
-                
-                car.producer = producer
-                car.model = model
-                car.color = color
-                car.year = year
-                car.picture = picture
                 try context.save()
-            }
-        } catch let error as NSError {
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func saveNewCar(car: CarModel) {
+        
+        let newCar = Car(context: context)
+        newCar.id = .init()
+        newCar.producer = car.producer
+        newCar.model = car.model
+        newCar.color = car.color
+        newCar.year = car.year
+        newCar.picture = car.picture
+        
+        do {
+                try context.save()
+        } catch let error {
             print(error.localizedDescription)
         }
     }

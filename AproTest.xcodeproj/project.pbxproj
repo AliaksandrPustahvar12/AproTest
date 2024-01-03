@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D481B39A2B453F11006E5D01 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D481B3992B453F11006E5D01 /* SnapKit */; };
+		D481B39C2B455B1D006E5D01 /* CarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D481B39B2B455B1D006E5D01 /* CarModel.swift */; };
 		D4DA11E32B4132EA00159E74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DA11E22B4132EA00159E74 /* AppDelegate.swift */; };
 		D4DA11E52B4132EA00159E74 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DA11E42B4132EA00159E74 /* SceneDelegate.swift */; };
 		D4DA11EC2B4132EC00159E74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4DA11EB2B4132EC00159E74 /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D481B39B2B455B1D006E5D01 /* CarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarModel.swift; sourceTree = "<group>"; };
 		D4DA11DF2B4132EA00159E74 /* AproTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AproTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4DA11E22B4132EA00159E74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4DA11E42B4132EA00159E74 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				D4DA121C2B4405CC00159E74 /* CarList */,
 				D4DA12082B418E7200159E74 /* CarDetailView.swift */,
 				D4DA12042B4142A300159E74 /* NewCarView.swift */,
+				D481B39B2B455B1D006E5D01 /* CarModel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 				D4DA11F72B4134CC00159E74 /* CarsListView.swift in Sources */,
 				D4DA11FE2B4139BB00159E74 /* CarsListController.swift in Sources */,
 				D4DA11E32B4132EA00159E74 /* AppDelegate.swift in Sources */,
+				D481B39C2B455B1D006E5D01 /* CarModel.swift in Sources */,
 				D4DA12052B4142A300159E74 /* NewCarView.swift in Sources */,
 				D4DA12092B418E7200159E74 /* CarDetailView.swift in Sources */,
 				D4DA11E52B4132EA00159E74 /* SceneDelegate.swift in Sources */,

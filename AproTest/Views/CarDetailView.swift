@@ -7,8 +7,8 @@
 
 import UIKit
 
-class CarDetailView: UIViewController {
-  
+final class CarDetailView: UIViewController {
+ 
    lazy private var imageButton: UIButton = {
         let button = UIButton()
         button.imageView?.contentMode = .scaleAspectFill
@@ -113,6 +113,8 @@ class CarDetailView: UIViewController {
     
     private var id: UUID?
     
+    private var editCar: Car?
+    
     private let imagePicker = UIImagePickerController()
 
     override func viewDidLoad() {
@@ -213,6 +215,8 @@ class CarDetailView: UIViewController {
     }
     
     func setUpView(car: Car) {
+        self.editCar = car
+        
         if let imageData = car.picture {
             imageButton.setImage(UIImage(data: imageData), for: .normal)
         }
@@ -260,13 +264,19 @@ class CarDetailView: UIViewController {
     }
     
     private func updateCarInfo() {
-        guard let id = self.id else { return }
-        
+     
         guard let producer = producerTextField.text , !producer.isEmpty, let model = modelTextField.text, !model.isEmpty, let year = yearTextField.text, !year.isEmpty, let color = colorTextField.text, !color.isEmpty, let picture = imageButton.imageView?.image, let pictureData = picture.pngData() else {
             showAlert()
             return
         }
-        DatabaseService.shared.editCar(id: id, model: model, color: color, producer: producer, year: year, picture: pictureData)
+        
+        editCar?.picture = pictureData
+        editCar?.producer = producer
+        editCar?.model = model
+        editCar?.color = color
+        editCar?.year = year
+      
+        DatabaseService.shared.editCar()
     }
     
     private func showAlert() {
