@@ -35,7 +35,7 @@ final class CarsListView: UIViewController {
         return button
     }()
     
-    private var carsList: UITableView = {
+    var carsList: UITableView = {
         let list = UITableView()
         list.separatorStyle = .none
         list.backgroundColor = .systemMint
@@ -117,8 +117,6 @@ extension CarsListView: CarsListViewProtocol {
     }
     
     func reloadTableView() {
-        DispatchQueue.main.async {
             self.carsList.reloadData()
-        }
     }
 }

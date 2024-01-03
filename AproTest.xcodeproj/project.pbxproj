@@ -18,7 +18,8 @@
 		D4DA12052B4142A300159E74 /* NewCarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DA12042B4142A300159E74 /* NewCarView.swift */; };
 		D4DA12072B41746F00159E74 /* CarsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DA12062B41746F00159E74 /* CarsListCell.swift */; };
 		D4DA12092B418E7200159E74 /* CarDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DA12082B418E7200159E74 /* CarDetailView.swift */; };
-		D4DA12162B42D11100159E74 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D4DA12152B42D11100159E74 /* SnapKit */; };
+		D4DA12222B452E1D00159E74 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D4DA12212B452E1D00159E74 /* SnapKit */; };
+		D4DA12242B452E1D00159E74 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = D4DA12232B452E1D00159E74 /* SnapKit-Dynamic */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -55,7 +56,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4DA12162B42D11100159E74 /* SnapKit in Frameworks */,
+				D4DA12222B452E1D00159E74 /* SnapKit in Frameworks */,
+				D4DA12242B452E1D00159E74 /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,7 +149,8 @@
 			);
 			name = AproTest;
 			packageProductDependencies = (
-				D4DA12152B42D11100159E74 /* SnapKit */,
+				D4DA12212B452E1D00159E74 /* SnapKit */,
+				D4DA12232B452E1D00159E74 /* SnapKit-Dynamic */,
 			);
 			productName = AproTest;
 			productReference = D4DA11DF2B4132EA00159E74 /* AproTest.app */;
@@ -178,7 +181,7 @@
 			);
 			mainGroup = D4DA11D62B4132EA00159E74;
 			packageReferences = (
-				D4DA11FF2B413FAC00159E74 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				D4DA12202B452E1D00159E74 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = D4DA11E02B4132EA00159E74 /* Products */;
 			projectDirPath = "";
@@ -288,7 +291,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -345,6 +348,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
@@ -431,21 +435,26 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		D4DA11FF2B413FAC00159E74 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		D4DA12202B452E1D00159E74 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.6.0;
+				minimumVersion = 5.7.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		D4DA12152B42D11100159E74 /* SnapKit */ = {
+		D4DA12212B452E1D00159E74 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D4DA11FF2B413FAC00159E74 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = D4DA12202B452E1D00159E74 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		D4DA12232B452E1D00159E74 /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D4DA12202B452E1D00159E74 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
 		};
 /* End XCSwiftPackageProductDependency section */
 

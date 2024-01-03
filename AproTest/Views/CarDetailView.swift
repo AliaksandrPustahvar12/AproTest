@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import CoreData
+//import CoreData
 
 class CarDetailView: UIViewController {
   
@@ -263,28 +263,11 @@ class CarDetailView: UIViewController {
     private func updateCarInfo() {
         guard let id = self.id else { return }
         
-        guard let producer = producerTextField.text , !producer.isEmpty, let model = modelTextField.text, !model.isEmpty, let year = yearTextField.text, !year.isEmpty, let color = colorTextField.text, !color.isEmpty, let picture = imageButton.imageView?.image else {
+        guard let producer = producerTextField.text , !producer.isEmpty, let model = modelTextField.text, !model.isEmpty, let year = yearTextField.text, !year.isEmpty, let color = colorTextField.text, !color.isEmpty, let picture = imageButton.imageView?.image, let pictureData = picture.pngData() else {
             showAlert()
             return
         }
-        
-        let fetchRequest: NSFetchRequest<Car> = Car.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "id == %@", id as CVarArg)
-
-        do {
-            let cars = try DatabaseService.shared.context.fetch(fetchRequest)
-            if let car = cars.first {
-            
-                car.producer = producer
-                car.model = model
-                car.color = color
-                car.year = year
-                car.picture = picture.pngData()
-                try DatabaseService.shared.context.save()
-            }
-        } catch let error as NSError {
-            print(error.localizedDescription)
-        }
+        DatabaseService.shared.editCar(id: id, model: model, color: color, producer: producer, year: year, picture: pictureData)
     }
     
     private func showAlert() {

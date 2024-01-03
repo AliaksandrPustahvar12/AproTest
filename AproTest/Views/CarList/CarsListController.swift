@@ -5,8 +5,7 @@
 //  Created by Aliaksandr Pustahvar on 31.12.23.
 //
 
-import UIKit
-import CoreData
+import Foundation
 
 protocol CarsListControllerProtocol {
     var cars: [Car] { get set }
@@ -23,20 +22,21 @@ final class CarsListController: CarsListControllerProtocol {
         self.view = view
         
         Task {
-            await getCars()
+            let allCars = await DatabaseService.shared.getCars()
+
+            await MainActor.run {
+                cars = allCars
+                self.view?.reloadTableView()
+            }
         }
     }
 
     func getCars() async {
-        let fetchRequest: NSFetchRequest<Car> = Car.fetchRequest()
-        do {
-            cars = try DatabaseService.shared.context.fetch(fetchRequest)
-            
-            await MainActor.run {
-                self.view?.reloadTableView()
-            }
-        } catch let error as NSError {
-            print(error.localizedDescription)
+        let allCars = await DatabaseService.shared.getCars()
+        
+        await MainActor.run {
+            cars = allCars
+            self.view?.reloadTableView()
         }
     }
 }
